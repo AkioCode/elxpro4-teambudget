@@ -2,6 +2,8 @@
 ARG VARIANT=latest
 FROM elixir:${VARIANT}
 
+ENV APP=akiocode-team-budget-elxpro4
+
 # This Dockerfile adds a non-root user with sudo access. Update the “remoteUser” property in
 # devcontainer.json to use it. More info: https://aka.ms/vscode-remote/containers/non-root-user.
 ARG USERNAME=vscode
@@ -54,9 +56,17 @@ RUN su ${USERNAME} -c "mix local.hex --force \
   && mix archive.install --force hex phx_new ${PHOENIX_VERSION}"
 
 # [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update \
+RUN apt-get update \
+  && apt-get install -y python3 python3-pip git-core curl
+
 #     && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
-# [Optional] Uncomment this line to install additional package.
+RUN pip3 install --no-cache-dir --upgrade pip && \
+    pip3 install --no-cache-dir gigalixir
+
+RUN echo 'export PATH=~/.local/bin:$PATH' >> ~/.bash_profile
+RUN /bin/bash -c 'source ~/.bash_profile'
+
+# [Optional] Uncomment this line to install additional pacPkage.
 # RUN  mix ...
