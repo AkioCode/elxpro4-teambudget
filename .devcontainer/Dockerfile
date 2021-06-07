@@ -2,7 +2,7 @@
 ARG VARIANT=latest
 FROM elixir:${VARIANT}
 
-ENV APP=akiocode-team-budget-elxpro4
+ENV APP="akiocode-team-budget-elxpro4"
 
 # This Dockerfile adds a non-root user with sudo access. Update the “remoteUser” property in
 # devcontainer.json to use it. More info: https://aka.ms/vscode-remote/containers/non-root-user.
