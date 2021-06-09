@@ -11,7 +11,9 @@ defmodule TeamBudgetWeb.Router do
     forward "/graphql", Absinthe.Plug, schema: TeamBudgetGraphql.Schema, json_code: Jason
 
     if Mix.env() == :dev do
-      forward "/graphiql", Absinthe.Plug.GraphiQL, schema: TeamBudgetGraphql.Schema, json_code: Jason
+      forward "/graphiql", Absinthe.Plug.GraphiQL,
+        schema: TeamBudgetGraphql.Schema,
+        json_code: Jason
     end
   end
 

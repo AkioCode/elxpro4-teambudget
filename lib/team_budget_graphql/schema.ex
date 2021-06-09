@@ -2,7 +2,7 @@ defmodule TeamBudgetGraphql.Schema do
   use Absinthe.Schema
   alias TeamBudgetGraphql.Resolvers
 
-  import_types TeamBudgetGraphql.Types
+  import_types(TeamBudgetGraphql.Types)
 
   query do
     @desc "Get list of all users"
