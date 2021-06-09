@@ -2,7 +2,9 @@
 ARG VARIANT=latest
 FROM elixir:${VARIANT}
 
-ENV APP="akiocode-team-budget-elxpro4"
+ENV APP_NAME="akiocode-team-budget-elxpro4"
+ENV SECRET_KEY_BASE="$(mix phx.gen.secret)"
+ENV DATABASE_URL="postgresql://3e706ed6-6d73-4198-88b6-8a266b627c1b-user:pw-38d1aeec-6e0f-4f66-9ac1-77d14f15ff90@postgres-free-tier-v2020.gigalixir.com:5432/3e706ed6-6d73-4198-88b6-8a266b627c1b"
 
 # This Dockerfile adds a non-root user with sudo access. Update the “remoteUser” property in
 # devcontainer.json to use it. More info: https://aka.ms/vscode-remote/containers/non-root-user.
