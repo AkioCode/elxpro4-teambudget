@@ -23,5 +23,5 @@ defmodule TeamBudgetWeb.Router do
       pipe_through [:fetch_session, :protect_from_forgery]
       live_dashboard "/dashboard", metrics: TeamBudgetWeb.Telemetry
     end
-  # end
+  end
 end
