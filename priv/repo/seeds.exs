@@ -15,7 +15,8 @@ alias TeamBudget.{Accounts.User, Repo}
   first_name: "Cafe",
   last_name: "Pilao",
   email: "cafe.pilao@mail.com",
-  password_hash: "123456"
+  password: "123456",
+  password_confirmation: "123456"
 }
 |> User.changeset()
 |> Repo.insert()
@@ -24,7 +25,8 @@ alias TeamBudget.{Accounts.User, Repo}
   first_name: "Cafe",
   last_name: "3 Coracoes",
   email: "cafe.3coracoes@mail.com",
-  password_hash: "123456"
+  password: "123456",
+  password_confirmation: "123456"
 }
 |> User.changeset()
 |> Repo.insert()
