@@ -27,5 +27,16 @@ defmodule TeamBudget.Accounts.User do
     |> cast(attrs, @fields)
     |> validate_required(@fields)
     |> unique_constraint(:email)
+    |> validate_format(:email, ~r/@/, message: "has invalid format. Please type a valid e-mail.")
+    |> update_change(:email, &String.downcase/1)
+    |> validate_length(:password, min: 6, max: 100)
+    |> validate_confirmation(:password)
+    |> hash_password()
   end
+
+  defp hash_password(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
+    change(changeset, Argon2.add_hash(password))
+  end
+
+  defp hash_password(changeset), do: changeset
 end
