@@ -8,6 +8,8 @@ To start your Phoenix server:
 
 Now you can visit [`akiocode-team-budget-elxpro4 `](https://akiocode-team-budget-elxpro4.gigalixirapp.com) from your browser.
 
+Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+
 ## Learn more
 
   * Official website: https://www.phoenixframework.org/
