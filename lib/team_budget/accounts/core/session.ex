@@ -4,10 +4,10 @@ defmodule TeamBudget.Accounts.Core.Session do
   alias TeamBudget.Accounts.User
 
   def login(%{email: _email, password: _password} = credentials) do
-    {:ok, %User{} = user} = authenticate(credentials)
-    {:ok, token, _claims} = Guardian.sign_in(user)
-
-    {:ok, %{token: token, user: user}}
+    with {:ok, %User{} = user} <- authenticate(credentials),
+         {:ok, token, _claims} = Guardian.sign_in(user) do
+      {:ok, %{token: token, user: user}}
+    end
   end
 
   defp authenticate(credentials) do

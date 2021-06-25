@@ -28,4 +28,6 @@ defmodule TeamBudget.Accounts.Core.Guardian do
   end
 
   def sign_in(%TeamBudget.Accounts.User{} = user), do: Guardian.encode_and_sign(__MODULE__, user)
+
+  def verify(token), do: Guardian.decode_and_verify(__MODULE__, token)
 end
