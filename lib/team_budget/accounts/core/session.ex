@@ -1,7 +1,7 @@
 defmodule TeamBudget.Accounts.Core.Session do
   alias TeamBudget.Accounts.Core.UserRepo
   alias TeamBudget.Accounts.Core.Guardian
-  alias TeamBudget.Accounts.User
+  alias TeamBudget.Accounts.Data.User
 
   def login(%{email: _email, password: _password} = credentials) do
     with {:ok, %User{} = user} <- authenticate(credentials),
