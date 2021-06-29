@@ -1,4 +1,4 @@
-defmodule TeamBudget.Data.Team do
+defmodule TeamBudget.Teams.Data.Team do
   use Ecto.Schema
   import Ecto.Changeset
   alias TeamBudget.Utils.CreateSlug
@@ -24,7 +24,7 @@ defmodule TeamBudget.Data.Team do
   def changeset(team, attrs) do
     team
     |> cast(attrs, [:name, :slug, :description, :user_id])
-    |> validate_required([:name, :description, :user_id])
+    |> validate_required([:name, :description])
     |> CreateSlug.perform(:name)
     |> unique_constraint(:name)
     |> unique_constraint(:slug)

@@ -1,4 +1,5 @@
 defmodule TeamBudget.Accounts.Core.UserRepo do
+  import Ecto.Query
   alias TeamBudget.Accounts.Data.User
   alias TeamBudget.Repo
 

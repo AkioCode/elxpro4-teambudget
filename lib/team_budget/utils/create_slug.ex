@@ -4,6 +4,7 @@ defmodule TeamBudget.Utils.CreateSlug do
       changes
       |> Map.get(field)
       |> Slug.slugify()
+
     changes = Map.put(changes, :slug, slug)
     %Ecto.Changeset{changeset | changes: changes}
   end
