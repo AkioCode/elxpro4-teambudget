@@ -11,10 +11,8 @@ defmodule TeamBudget.Teams.Core.TeamRepo do
   def list_teams(user_id) do
     from(
       t in Team,
-      join:
-        u in assoc(t, :user),
-      where:
-        t.user_id == ^user_id,
+      join: u in assoc(t, :user),
+      where: t.user_id == ^user_id,
       preload: [:user]
     )
     |> Repo.all()

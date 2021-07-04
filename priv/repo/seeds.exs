@@ -1,25 +1,18 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     TeamBudget.Repo.insert!(%TeamBudget.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
-alias TeamBudget.{Accounts.Data.User, Repo}
+alias TeamBudget.{Accounts.Data.User, Teams.Data.Team, Members.Data.Member, Repo}
 
-%{
-  first_name: "Cafe",
-  last_name: "Pilao",
-  email: "cafe.pilao@mail.com",
-  password: "123456",
-  password_confirmation: "123456"
-}
-|> User.changeset()
-|> Repo.insert()
+{:ok, %{id: user_id, teams: [%{id: team_id} | _]}} =
+  %{
+    first_name: "Cafe",
+    last_name: "Pilao",
+    email: "cafe.pilao@mail.com",
+    password: "123456",
+    password_confirmation: "123456",
+    teams: [
+      %{name: "Time 01", description: "Time 01"}
+    ]
+  }
+  |> User.changeset()
+  |> Repo.insert()
 
 %{
   first_name: "Cafe",
@@ -29,4 +22,7 @@ alias TeamBudget.{Accounts.Data.User, Repo}
   password_confirmation: "123456"
 }
 |> User.changeset()
+|> Repo.insert()
+
+%Member{user_id: user_id, team_id: team_id}
 |> Repo.insert()

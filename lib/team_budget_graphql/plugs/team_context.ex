@@ -6,7 +6,6 @@ defmodule TeamBudgetGraphql.Plugs.TeamContext do
   def init(opts), do: opts
 
   def call(conn, _) do
-
     case is_there_user_in_context?(conn) do
       nil ->
         Absinthe.Plug.put_options(conn, context: %{})

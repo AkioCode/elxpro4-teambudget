@@ -35,7 +35,7 @@ defmodule TeamBudgetGraphql.Schema do
 
     @desc "Send a invite to user"
     field :send_invite, list_of(:invite) do
-      arg(:invite, non_null(list_of(:string)))
+      arg(:invites, non_null(list_of(:string)))
       middleware(Middleware.Authorize, :user)
       middleware(Middleware.SetATeam)
       resolve(&Resolvers.InviteResolver.send_invite/3)

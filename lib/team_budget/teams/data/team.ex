@@ -3,6 +3,7 @@ defmodule TeamBudget.Teams.Data.Team do
   import Ecto.Changeset
   alias TeamBudget.Utils.CreateSlug
   alias TeamBudget.Accounts.Data.User
+  alias TeamBudget.Members.Data.Member
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -10,8 +11,9 @@ defmodule TeamBudget.Teams.Data.Team do
     field :description, :string
     field :name, :string
     field :slug, :string
-    belongs_to :user, User
 
+    belongs_to :user, User
+    many_to_many :members, User, join_through: Member
     timestamps()
   end
 

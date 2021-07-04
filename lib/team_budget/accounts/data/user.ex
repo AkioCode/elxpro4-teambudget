@@ -2,6 +2,7 @@ defmodule TeamBudget.Accounts.Data.User do
   use Ecto.Schema
   import Ecto.Changeset
   alias TeamBudget.Teams.Data.Team
+  alias TeamBudget.Members.Data.Member
 
   @fields [:email, :first_name, :last_name, :role, :password, :password_confirmation]
   @primary_key {:id, :binary_id, autogenerate: true}
@@ -14,8 +15,9 @@ defmodule TeamBudget.Accounts.Data.User do
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
     field :role, :string, default: "user"
-    has_many :teams, Team
 
+    has_many :teams, Team
+    many_to_many :members, Team, join_through: Member
     timestamps()
   end
 
