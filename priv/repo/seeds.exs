@@ -14,15 +14,27 @@ alias TeamBudget.{Accounts.Data.User, Teams.Data.Team, Members.Data.Member, Repo
   |> User.changeset()
   |> Repo.insert()
 
-%{
-  first_name: "Cafe",
-  last_name: "3 Coracoes",
-  email: "cafe.3coracoes@mail.com",
-  password: "123456",
-  password_confirmation: "123456"
-}
-|> User.changeset()
+{:ok, u2} =
+  %{
+    first_name: "Cafe",
+    last_name: "3 Coracoes",
+    email: "cafe.3coracoes@mail.com",
+    password: "123456",
+    password_confirmation: "123456"
+  }
+  |> User.changeset()
+  |> Repo.insert()
+
+%Member{user_id: u2.id, team_id: team_id}
 |> Repo.insert()
 
-%Member{user_id: user_id, team_id: team_id}
-|> Repo.insert()
+{:ok, u3} =
+  %{
+    first_name: "Cafe",
+    last_name: "Nescafe",
+    email: "necafe@mail.com",
+    password: "123456",
+    password_confirmation: "123456"
+  }
+  |> User.changeset()
+  |> Repo.insert()
